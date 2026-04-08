@@ -10,4 +10,5 @@ export declare class VehicleService {
     findByPlate(plate: string, companyId: number): Promise<Vehicle>;
     update(id: string, dto: UpdateVehicleDto, companyId: number): Promise<Vehicle>;
     remove(id: string, companyId: number): Promise<Vehicle>;
+    countInMaintenance(companyId: number): Promise<number>;
 }

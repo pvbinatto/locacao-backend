@@ -42,7 +42,7 @@ export class MaintenanceService {
 
     // Update vehicle status
     if (dto.status !== 'Finished') {
-      vehicle.status = 'in maintenance';
+      vehicle.status = 'maintenance';
       vehicle.isAvailable = false;
     } else {
       vehicle.status = 'available';
@@ -99,7 +99,7 @@ export class MaintenanceService {
           vehicle.status = 'available';
           vehicle.isAvailable = true;
         } else {
-          vehicle.status = 'in maintenance';
+          vehicle.status = 'maintenance';
           vehicle.isAvailable = false;
         }
         await this.vehicleRepository.save(vehicle);

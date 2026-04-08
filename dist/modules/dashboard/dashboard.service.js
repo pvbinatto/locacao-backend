@@ -57,7 +57,7 @@ let DashboardService = class DashboardService {
         });
         const monthlyMaintenanceValue = monthlyMaintenances.reduce((acc, m) => acc + Number(m.value), 0);
         const vehiclesInMaintenance = await this.vehicleRepository.find({
-            where: { companyId, status: 'in maintenance' },
+            where: { companyId, status: 'maintenance' },
         });
         const lastRentals = await this.rentalRepository.find({
             where: { companyId },

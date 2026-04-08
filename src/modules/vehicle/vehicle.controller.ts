@@ -24,6 +24,12 @@ export class VehicleController {
     return this.vehicleService.findAll(companyId);
   }
 
+  @Get('maintenance/count')
+  @ApiOperation({ summary: 'Get total vehicles in maintenance' })
+  countInMaintenance(@GetUser('companyId') companyId: number) {
+    return this.vehicleService.countInMaintenance(companyId);
+  }
+
   @Get(':id')
   @ApiOperation({ summary: 'Get a specific vehicle by ID' })
   findOne(@Param('id') id: string, @GetUser('companyId') companyId: number) {

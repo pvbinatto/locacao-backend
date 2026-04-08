@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, In } from 'typeorm';
 import { Vehicle } from './entities/vehicle.entity';
 import { CreateVehicleDto, UpdateVehicleDto } from './dto/vehicle.dto';
 
@@ -72,5 +72,11 @@ export class VehicleService {
   async remove(id: string, companyId: number) {
     const vehicle = await this.findOne(id, companyId);
     return this.vehicleRepository.remove(vehicle);
+  }
+
+  async countInMaintenance(companyId: number) {
+    return this.vehicleRepository.count({
+      where: { companyId, status: In(['maintenance', 'in maintenance']) }
+    });
   }
 }

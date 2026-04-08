@@ -47,7 +47,7 @@ let MaintenanceService = class MaintenanceService {
         });
         const savedMaintenance = await this.maintenanceRepository.save(maintenance);
         if (dto.status !== 'Finished') {
-            vehicle.status = 'in maintenance';
+            vehicle.status = 'maintenance';
             vehicle.isAvailable = false;
         }
         else {
@@ -100,7 +100,7 @@ let MaintenanceService = class MaintenanceService {
                     vehicle.isAvailable = true;
                 }
                 else {
-                    vehicle.status = 'in maintenance';
+                    vehicle.status = 'maintenance';
                     vehicle.isAvailable = false;
                 }
                 await this.vehicleRepository.save(vehicle);

@@ -30,6 +30,9 @@ let VehicleController = class VehicleController {
     findAll(companyId) {
         return this.vehicleService.findAll(companyId);
     }
+    countInMaintenance(companyId) {
+        return this.vehicleService.countInMaintenance(companyId);
+    }
     findOne(id, companyId) {
         return this.vehicleService.findOne(id, companyId);
     }
@@ -61,6 +64,14 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], VehicleController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('maintenance/count'),
+    (0, swagger_1.ApiOperation)({ summary: 'Get total vehicles in maintenance' }),
+    __param(0, (0, get_user_decorator_1.GetUser)('companyId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], VehicleController.prototype, "countInMaintenance", null);
 __decorate([
     (0, common_1.Get)(':id'),
     (0, swagger_1.ApiOperation)({ summary: 'Get a specific vehicle by ID' }),

@@ -75,6 +75,11 @@ let VehicleService = class VehicleService {
         const vehicle = await this.findOne(id, companyId);
         return this.vehicleRepository.remove(vehicle);
     }
+    async countInMaintenance(companyId) {
+        return this.vehicleRepository.count({
+            where: { companyId, status: (0, typeorm_2.In)(['maintenance', 'in maintenance']) }
+        });
+    }
 };
 exports.VehicleService = VehicleService;
 exports.VehicleService = VehicleService = __decorate([
